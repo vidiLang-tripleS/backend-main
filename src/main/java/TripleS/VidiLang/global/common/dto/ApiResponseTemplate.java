@@ -1,5 +1,6 @@
 package TripleS.VidiLang.global.common.dto;
 
+import TripleS.VidiLang.global.exception.ErrorCode;
 import TripleS.VidiLang.global.exception.SuccessCode;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
