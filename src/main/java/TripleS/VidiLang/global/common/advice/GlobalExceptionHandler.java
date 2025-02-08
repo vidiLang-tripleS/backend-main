@@ -1,8 +1,10 @@
 package TripleS.VidiLang.global.common.advice;
 
+import TripleS.VidiLang.global.common.dto.ApiResponseTemplate;
 import java.nio.file.AccessDeniedException;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
