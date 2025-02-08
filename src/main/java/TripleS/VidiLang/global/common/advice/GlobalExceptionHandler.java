@@ -2,6 +2,7 @@ package TripleS.VidiLang.global.common.advice;
 
 import TripleS.VidiLang.global.common.dto.ApiResponseTemplate;
 import TripleS.VidiLang.global.exception.ErrorCode;
+import TripleS.VidiLang.global.exception.model.CustomException;
 import java.nio.file.AccessDeniedException;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
