@@ -1,0 +1,74 @@
+spring:
+  profiles:
+    active: local  # 현재 환경을 'local'로 설정
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # 운영에서는 'validate' 추천
+    show-sql: true  # SQL 로그 출력 (디버깅용)
+    properties:
+      hibernate:
+        format_sql: true  # SQL 보기 좋게 출력
+        dialect: org.hibernate.dialect.MySQL8Dialect  # MySQL 8.x에 맞는 Dialect 설정
+
+  sql:
+    init:
+      mode: always  # 초기 SQL 스크립트 실행 (schema.sql, data.sql 적용)
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: profile, email
+
+          kakao:
+            client-id: ${KAKAO_CLIENT_ID}
+            client-secret: ${KAKAO_CLIENT_SECRET}
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            client-authentication-method: client_secret_post
+            authorization-grant-type: authorization_code
+            scope: profile_nickname, profile_image, account_email
+            client-name: Kakao
+
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+  jwt:
+    secret-key: ${JWT_SECRET_KEY}
+    access:
+      expiration: 3600000  # 1시간 (1,000 * 60 * 60)
+    refresh:
+      expiration: 1209600000  # 14일 (1,000 * 60 * 60 * 24 * 14)
+
+  # Swagger 설정
+springdoc:
+  packages-to-scan: TripleS.VidiLang.domain
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    path: /
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
+
+# 서버 설정
+server:
+  port: 8080  # 애플리케이션 실행 포트
