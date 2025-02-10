@@ -35,7 +35,7 @@ public class Video extends BaseTimeEntity {
     private String youtubeUrl;
 
     @Embedded
-    private Post post;
+    private VideoMetaData videoMetaData;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -53,9 +53,9 @@ public class Video extends BaseTimeEntity {
 
     // 개발 초기에 빠른 개발을 위해서 Builder패턴으로 수정 -> 추후 리팩토링 당시 정적 팩터리 메서드 패턴으로 수정
     @Builder
-    public Video(String youtubeUrl, Post post) {
+    public Video(String youtubeUrl, VideoMetaData videoMetaData) {
         this.youtubeUrl = youtubeUrl;
-        this.post = post;
+        this.videoMetaData = videoMetaData;
         this.quizStatus = QuizStatus.INCOMPLETE;
     }
 }
