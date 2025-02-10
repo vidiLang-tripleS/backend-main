@@ -15,7 +15,8 @@ spring:
     properties:
       hibernate:
         format_sql: true  # SQL 보기 좋게 출력
-        dialect: org.hibernate.dialect.MySQL8Dialect  # MySQL 8.x에 맞는 Dialect 설정
+        dialect: # Spring Boot 3점대 + Hibernate 6점대 이상에서는 hibernate가 알아서 버전에 맞는 mysql 찾아주니까 명시할 필요없음!
+    open-in-view: false # 성능 최적화를 위한 open-in-view 설정
 
   sql:
     init:
