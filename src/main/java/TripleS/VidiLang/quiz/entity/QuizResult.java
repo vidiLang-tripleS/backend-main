@@ -27,7 +27,7 @@ public class QuizResult {
     @Column(nullable = false)
     private int correctAnswers;
 
-    @Column(nullable = false, precision = 5, scale = 2)
+    @Column(nullable = false, precision = 5)
     private double scorePercentage;
 
     @ManyToOne
