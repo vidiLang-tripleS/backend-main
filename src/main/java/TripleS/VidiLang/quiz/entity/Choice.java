@@ -17,6 +17,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(
+        indexes = {
+                @Index(name = "idx_choice_question_id", columnList = "question_id"),
+                @Index(name = "idx_choice_correct", columnList = "question_id, isCorrect")
+        }
+)
 public class Choice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
