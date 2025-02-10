@@ -1,5 +1,6 @@
 package TripleS.VidiLang.member;
 
+import TripleS.VidiLang.folder.Folder;
 import TripleS.VidiLang.global.common.entitiy.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
