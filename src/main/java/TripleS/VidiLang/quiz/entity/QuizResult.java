@@ -36,7 +36,7 @@ public class QuizResult {
 
     @Builder
     public QuizResult(int totalQuestions, int correctAnswers, double scorePercentage, Quiz quiz) {
-        // 원시값 포장을 위한 비지니스 로직 추가 예정
+        // 원시값 제어를 위한 비지니스 로직 추가 예정 or 원시값 포장 & Vo객체 패턴 적용 방안으로 모색
         this.totalQuestions = totalQuestions;
         this.correctAnswers = correctAnswers;
         this.scorePercentage = scorePercentage;
