@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -36,4 +37,11 @@ public class Question {
             fetch = FetchType.LAZY,
             orphanRemoval = true)
     private List<Choice> choices;
+
+    @Builder
+    public Question(String text, Quiz quiz, List<Choice> choices) {
+        this.text = text;
+        this.quiz = quiz;
+        this.choices = choices;
+    }
 }

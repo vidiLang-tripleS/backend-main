@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,4 +32,11 @@ public class UserAnswer {
 
     @Column(nullable = false)
     private boolean isCorrect; // 정답 여부 (미리 저장)
+
+    @Builder
+    public UserAnswer(Question question, Choice choice, boolean isCorrect) {
+        this.question = question;
+        this.choice = choice;
+        this.isCorrect = isCorrect;
+    }
 }
