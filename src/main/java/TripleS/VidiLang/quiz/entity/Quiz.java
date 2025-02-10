@@ -1,7 +1,7 @@
-package TripleS.VidiLang.quiz;
+package TripleS.VidiLang.quiz.entity;
 
 import TripleS.VidiLang.global.common.entitiy.BaseTimeEntity;
-import TripleS.VidiLang.video.Video;
+import TripleS.VidiLang.video.entity.Video;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

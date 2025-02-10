@@ -1,4 +1,4 @@
-package TripleS.VidiLang.quiz;
+package TripleS.VidiLang.quiz.entity;
 
 public enum QuizStatus {
 

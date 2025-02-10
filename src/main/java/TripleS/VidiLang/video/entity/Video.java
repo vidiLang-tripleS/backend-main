@@ -1,9 +1,9 @@
-package TripleS.VidiLang.video;
+package TripleS.VidiLang.video.entity;
 
-import TripleS.VidiLang.folder.Folder;
+import TripleS.VidiLang.folder.entity.Folder;
 import TripleS.VidiLang.global.common.entitiy.BaseTimeEntity;
-import TripleS.VidiLang.quiz.Quiz;
-import TripleS.VidiLang.quiz.QuizStatus;
+import TripleS.VidiLang.quiz.entity.Quiz;
+import TripleS.VidiLang.quiz.entity.QuizStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;

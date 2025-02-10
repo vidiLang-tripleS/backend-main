@@ -1,4 +1,4 @@
-package TripleS.VidiLang.video;
+package TripleS.VidiLang.video.entity;
 
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;

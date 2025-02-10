@@ -1,4 +1,4 @@
-package TripleS.VidiLang.member;
+package TripleS.VidiLang.member.entity;
 
 public enum SocialType {
 

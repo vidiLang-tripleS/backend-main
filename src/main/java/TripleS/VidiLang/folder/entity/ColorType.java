@@ -1,4 +1,4 @@
-package TripleS.VidiLang.folder;
+package TripleS.VidiLang.folder.entity;
 
 public enum ColorType {
 
