@@ -2,6 +2,7 @@ package TripleS.VidiLang.video;
 
 import TripleS.VidiLang.folder.Folder;
 import TripleS.VidiLang.global.common.entitiy.BaseTimeEntity;
+import TripleS.VidiLang.quiz.Quiz;
 import TripleS.VidiLang.quiz.QuizStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
