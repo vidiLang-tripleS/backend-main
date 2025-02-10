@@ -2,6 +2,7 @@ package TripleS.VidiLang.folder;
 
 import TripleS.VidiLang.global.common.entitiy.BaseTimeEntity;
 import TripleS.VidiLang.member.Member;
+import TripleS.VidiLang.video.Video;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
