@@ -27,13 +27,16 @@ public class Member extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USER_EMAIL")
+    @Column(name = "MEMBER_EMAIL", unique = true, nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     private String nickName;
 
+    @Column(nullable = false)
     private String profileUrl;
 
     @Enumerated(EnumType.STRING)
