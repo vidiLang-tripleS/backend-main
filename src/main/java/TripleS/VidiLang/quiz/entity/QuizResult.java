@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,4 +33,13 @@ public class QuizResult {
     @ManyToOne
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
+
+    @Builder
+    public QuizResult(int totalQuestions, int correctAnswers, double scorePercentage, Quiz quiz) {
+        // 원시값 포장을 위한 비지니스 로직 추가 예정
+        this.totalQuestions = totalQuestions;
+        this.correctAnswers = correctAnswers;
+        this.scorePercentage = scorePercentage;
+        this.quiz = quiz;
+    }
 }
