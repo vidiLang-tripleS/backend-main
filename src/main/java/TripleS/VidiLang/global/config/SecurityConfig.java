@@ -10,10 +10,15 @@ import org.springframework.security.config.annotation.web.configurers.FormLoginC
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import TripleS.VidiLang.jwt.JwtFilter;
+import TripleS.VidiLang.jwt.JwtTokenProvider;
+import TripleS.VidiLang.oauth2.handler.OAuth2LoginFailureHandler;
+import TripleS.VidiLang.oauth2.handler.OAuth2LoginSuccessHandler;
 import TripleS.VidiLang.oauth2.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 
@@ -21,7 +26,11 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
+
+	private final JwtTokenProvider jwtTokenProvider;
 	private final CustomOAuth2UserService customOAuth2UserService;
+	private final OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
+	private final OAuth2LoginFailureHandler oAuth2LoginFailureHandler;
 
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
@@ -40,16 +49,19 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		JwtFilter jwtFilter = new JwtFilter(jwtTokenProvider);
 		http.authorizeHttpRequests(auth -> auth
-			.requestMatchers("/", "/login", "/join", "/sign-up").permitAll()
+			.requestMatchers("/", "/login", "/join", "/sign-up", "/test").permitAll()
 			.anyRequest().authenticated()
 		);
 
 		http.oauth2Login(customConfigurer -> customConfigurer
-			// .successHandler(oAuth2LoginSuccessHandler)
-			// .failureHandler(oAuth2LoginFailureHandler)
+			.successHandler(oAuth2LoginSuccessHandler)
+			.failureHandler(oAuth2LoginFailureHandler)
 			.userInfoEndpoint(endpointConfig -> endpointConfig.userService(customOAuth2UserService))
 		);
+
+		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
 		http.formLogin(FormLoginConfigurer::disable);
 		http.csrf(AbstractHttpConfigurer::disable);
