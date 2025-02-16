@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class SwaggerTestController {
 
     @Operation(summary = "test API", description = "test API")
-    @GetMapping("string")
+    @GetMapping("/string")
     public String returnStr(){
         return "Hello World";
+    }
+
+    @GetMapping("/test")
+    public String test(){
+        return "test";
     }
 
 }
