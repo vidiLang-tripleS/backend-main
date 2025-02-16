@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 public enum SuccessCode {
     // 200 OK
     LOGIN_USER_SUCCESS(HttpStatus.OK, "로그인에 성공했습니다"),
+    SIGNUP_USER_SUCCESS(HttpStatus.OK, "회원가입에 성공했습니다"),
     GET_POST_SUCCESS(HttpStatus.OK, "게시글 조회가 완료되었습니다."),
     UPDATE_POST_SUCCESS(HttpStatus.OK, "게시글 수정이 완료되었습니다."),
     SMS_CERT_MESSAGE_SUCCESS(HttpStatus.OK, "메세지 전송이 완료되었습니다."),

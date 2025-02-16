@@ -36,7 +36,6 @@ public class Member {
     @Column(nullable = false)
     private String nickName;
 
-    @Column(nullable = false)
     private String ImageUrl;
 
     private String socialId; // 로그인한 소셜 타입의 식별자 값
@@ -55,5 +54,9 @@ public class Member {
         this.ImageUrl = imageUrl;
         this.socialId = socialId;
         this.socialType = socialType;
+    }
+
+    public void updatePassword(String encodedPassword) {
+        this.password = encodedPassword;
     }
 }
