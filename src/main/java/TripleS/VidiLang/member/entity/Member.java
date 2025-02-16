@@ -31,7 +31,6 @@ public class Member extends BaseTimeEntity {
     @Column(name = "MEMBER_EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -39,6 +38,8 @@ public class Member extends BaseTimeEntity {
 
     @Column(nullable = false)
     private String profileUrl;
+
+    private String socialId; // 로그인한 소셜 타입의 식별자 값
 
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
