@@ -10,7 +10,7 @@ import TripleS.VidiLang.member.entity.SocialType;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 	Optional<Member> findByEmail(String email);
 
-	Optional<Member> findByNickname(String nickname);
+	Optional<Member> findByNickName(String nickName);
 
 	Optional<Member> findBySocialTypeAndSocialId(SocialType socialType, String socialId);
 
