@@ -14,12 +14,15 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import TripleS.VidiLang.oauth2.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 
 @EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
+	private final CustomOAuth2UserService customOAuth2UserService;
+
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -40,6 +43,12 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(auth -> auth
 			.requestMatchers("/", "/login", "/join", "/sign-up").permitAll()
 			.anyRequest().authenticated()
+		);
+
+		http.oauth2Login(customConfigurer -> customConfigurer
+			// .successHandler(oAuth2LoginSuccessHandler)
+			// .failureHandler(oAuth2LoginFailureHandler)
+			.userInfoEndpoint(endpointConfig -> endpointConfig.userService(customOAuth2UserService))
 		);
 
 		http.formLogin(FormLoginConfigurer::disable);
