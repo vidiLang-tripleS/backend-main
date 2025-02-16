@@ -37,7 +37,7 @@ public class Member extends BaseTimeEntity {
     private String nickName;
 
     @Column(nullable = false)
-    private String profileUrl;
+    private String ImageUrl;
 
     private String socialId; // 로그인한 소셜 타입의 식별자 값
 
@@ -48,11 +48,12 @@ public class Member extends BaseTimeEntity {
     private List<Folder> folders;
 
     @Builder
-    public Member(String email, String password, String nickName, String profileUrl, SocialType socialType) {
+    public Member(String email, String password, String nickName, String imageUrl, String socialId, SocialType socialType) {
         this.email = email;
         this.password = password;
         this.nickName = nickName;
-        this.profileUrl = profileUrl;
+        this.ImageUrl = imageUrl;
+        this.socialId = socialId;
         this.socialType = socialType;
     }
 }

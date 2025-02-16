@@ -4,6 +4,9 @@ import java.util.Map;
 
 import TripleS.VidiLang.member.entity.Member;
 import TripleS.VidiLang.member.entity.SocialType;
+import TripleS.VidiLang.oauth2.userInfo.GoogleOAuth2UserInfo;
+import TripleS.VidiLang.oauth2.userInfo.KakaoOAuth2UserInfo;
+import TripleS.VidiLang.oauth2.userInfo.OAuth2UserInfo;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -41,18 +44,12 @@ public class OAuthAttributes {
 			.build();
 	}
 
-	/*
-	 * of메소드로 OAuthAttributes 객체가 생성되어, 유저 정보들이 담긴 OAuth2UserInfo가 소셜 타입별로 주입된 상태
-	 * OAuth2UserInfo에서 socialId(식별값), nickname, imageUrl을 가져와서 build
-	 * email에는 UUID로 중복 없는 랜덤 값 생성
-	 * role은 GUEST로 설정
-	 */
 	public Member toEntity(SocialType socialType, OAuth2UserInfo oauth2UserInfo) {
 		return Member.builder()
 			.socialType(socialType)
 			.socialId(oauth2UserInfo.getId())
 			.email(oauth2UserInfo.getEmail())
-			.nickname(oauth2UserInfo.getNickname())
+			.nickName(oauth2UserInfo.getNickname())
 			.imageUrl(oauth2UserInfo.getImageUrl())
 			.build();
 	}
