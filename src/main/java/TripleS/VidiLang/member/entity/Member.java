@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member")
-public class Member extends BaseTimeEntity {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +31,14 @@ public class Member extends BaseTimeEntity {
     @Column(name = "MEMBER_EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
     private String nickName;
 
-    @Column(nullable = false)
-    private String profileUrl;
+    private String ImageUrl;
+
+    private String socialId; // 로그인한 소셜 타입의 식별자 값
 
     @Enumerated(EnumType.STRING)
     private SocialType socialType;
@@ -47,11 +47,16 @@ public class Member extends BaseTimeEntity {
     private List<Folder> folders;
 
     @Builder
-    public Member(String email, String password, String nickName, String profileUrl, SocialType socialType) {
+    public Member(String email, String password, String nickName, String imageUrl, String socialId, SocialType socialType) {
         this.email = email;
         this.password = password;
         this.nickName = nickName;
-        this.profileUrl = profileUrl;
+        this.ImageUrl = imageUrl;
+        this.socialId = socialId;
         this.socialType = socialType;
+    }
+
+    public void updatePassword(String encodedPassword) {
+        this.password = encodedPassword;
     }
 }
