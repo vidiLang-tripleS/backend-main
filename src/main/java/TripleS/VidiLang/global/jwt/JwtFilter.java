@@ -1,4 +1,4 @@
-package TripleS.VidiLang.jwt;
+package TripleS.VidiLang.global.jwt;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,7 +10,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import TripleS.VidiLang.global.exception.ErrorCode;
 import TripleS.VidiLang.global.exception.model.CustomException;
-import TripleS.VidiLang.member.entity.SocialType;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

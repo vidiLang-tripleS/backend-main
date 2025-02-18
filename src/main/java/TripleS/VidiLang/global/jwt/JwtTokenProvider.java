@@ -1,4 +1,4 @@
-package TripleS.VidiLang.jwt;
+package TripleS.VidiLang.global.jwt;
 
 import java.util.Date;
 import java.util.Optional;

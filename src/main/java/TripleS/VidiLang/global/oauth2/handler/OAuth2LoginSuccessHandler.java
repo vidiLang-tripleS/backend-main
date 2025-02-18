@@ -1,4 +1,4 @@
-package TripleS.VidiLang.oauth2.handler;
+package TripleS.VidiLang.global.oauth2.handler;
 
 import java.io.IOException;
 import java.util.Map;
@@ -11,9 +11,8 @@ import org.springframework.stereotype.Component;
 
 import TripleS.VidiLang.global.exception.ErrorCode;
 import TripleS.VidiLang.global.exception.model.CustomException;
-import TripleS.VidiLang.jwt.JwtTokenProvider;
+import TripleS.VidiLang.global.jwt.JwtTokenProvider;
 import TripleS.VidiLang.member.entity.SocialType;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

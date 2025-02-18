@@ -1,12 +1,12 @@
-package TripleS.VidiLang.oauth2;
+package TripleS.VidiLang.global.oauth2;
 
+import TripleS.VidiLang.global.oauth2.userInfo.GoogleOAuth2UserInfo;
+import TripleS.VidiLang.global.oauth2.userInfo.KakaoOAuth2UserInfo;
+import TripleS.VidiLang.global.oauth2.userInfo.OAuth2UserInfo;
 import java.util.Map;
 
 import TripleS.VidiLang.member.entity.Member;
 import TripleS.VidiLang.member.entity.SocialType;
-import TripleS.VidiLang.oauth2.userInfo.GoogleOAuth2UserInfo;
-import TripleS.VidiLang.oauth2.userInfo.KakaoOAuth2UserInfo;
-import TripleS.VidiLang.oauth2.userInfo.OAuth2UserInfo;
 import lombok.Builder;
 import lombok.Getter;
 

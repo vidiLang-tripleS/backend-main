@@ -1,4 +1,4 @@
-package TripleS.VidiLang.oauth2.service;
+package TripleS.VidiLang.global.oauth2.service;
 
 import java.util.Collections;
 import java.util.Map;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import TripleS.VidiLang.member.entity.Member;
 import TripleS.VidiLang.member.entity.SocialType;
 import TripleS.VidiLang.member.repository.MemberRepository;
-import TripleS.VidiLang.oauth2.OAuthAttributes;
+import TripleS.VidiLang.global.oauth2.OAuthAttributes;
 import lombok.RequiredArgsConstructor;
 
 

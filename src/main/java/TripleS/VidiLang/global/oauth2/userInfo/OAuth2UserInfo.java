@@ -1,4 +1,4 @@
-package TripleS.VidiLang.oauth2.userInfo;
+package TripleS.VidiLang.global.oauth2.userInfo;
 
 import java.util.Map;
 

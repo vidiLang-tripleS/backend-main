@@ -1,4 +1,4 @@
-package TripleS.VidiLang.oauth2.handler;
+package TripleS.VidiLang.global.oauth2.handler;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
