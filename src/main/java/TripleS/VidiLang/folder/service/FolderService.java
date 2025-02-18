@@ -1,11 +1,10 @@
 package TripleS.VidiLang.folder.service;
 
-import TripleS.VidiLang.folder.dto.FolderCreateRequestDto;
+import TripleS.VidiLang.folder.dto.request.FolderCreateRequest;
 import TripleS.VidiLang.folder.entity.ColorType;
 import TripleS.VidiLang.folder.entity.Folder;
 import TripleS.VidiLang.folder.entity.LanguageType;
 import TripleS.VidiLang.folder.repository.FolderRepository;
-import TripleS.VidiLang.global.common.dto.ApiResponseTemplate;
 import TripleS.VidiLang.global.exception.ErrorCode;
 import TripleS.VidiLang.global.exception.model.CustomException;
 import TripleS.VidiLang.member.entity.Member;
@@ -24,10 +23,10 @@ public class FolderService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public void createFolder(Principal principal, FolderCreateRequestDto folderCreateRequestDto) {
+    public void createFolder(Principal principal, FolderCreateRequest folderCreateRequest) {
         Long memberId = Long.parseLong(principal.getName());
         Member member = getMemberById(memberId);
-        Folder folder = saveFolder(member, folderCreateRequestDto);
+        Folder folder = saveFolder(member, folderCreateRequest);
 
         folderRepository.save(folder);
     }
@@ -38,12 +37,12 @@ public class FolderService {
                         ErrorCode.INVALID_ID_EXCEPTION.getMessage() + memberId));
     }
 
-    private Folder saveFolder(Member member, FolderCreateRequestDto folderCreateRequestDto) {
+    private Folder saveFolder(Member member, FolderCreateRequest folderCreateRequest) {
         return Folder.builder()
                 .member(member)
-                .name(folderCreateRequestDto.getName())
-                .colorType(ColorType.getColorTypeOfString(folderCreateRequestDto.getColorType()))
-                .languageType(LanguageType.getLanguageTypeOfString(folderCreateRequestDto.getLanguageType()))
+                .name(folderCreateRequest.getName())
+                .colorType(ColorType.getColorTypeOfString(folderCreateRequest.getColorType()))
+                .languageType(LanguageType.getLanguageTypeOfString(folderCreateRequest.getLanguageType()))
                 .build();
     }
 }
