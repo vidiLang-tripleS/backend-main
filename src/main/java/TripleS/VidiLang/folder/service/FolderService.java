@@ -37,6 +37,7 @@ public class FolderService {
     @Transactional(readOnly = true)
     public ApiResponseTemplate<List<FolderResponse>> getFolderListByPrincipal(Principal principal) {
         Long memberId = Long.parseLong(principal.getName());
+        exitsMemberById(memberId);
         List<Folder> folders = findFolderListByMemberId(memberId);
         List<FolderResponse> folderResponses = folderResponsesConverter(folders);
 
@@ -46,6 +47,13 @@ public class FolderService {
                 .message("폴더 조회 성공")
                 .data(folderResponses)
                 .build();
+    }
+
+    private void exitsMemberById(Long memberId) {
+        if (!memberRepository.existsById(memberId)) {
+            throw new CustomException(ErrorCode.INVALID_ID_EXCEPTION,
+                    ErrorCode.INVALID_ID_EXCEPTION.getMessage());
+        }
     }
 
     private List<FolderResponse> folderResponsesConverter(List<Folder> folders) {
