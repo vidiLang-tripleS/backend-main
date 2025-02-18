@@ -11,7 +11,7 @@ public enum ColorType {
     YELLOW("Yellow"),
     PURPLE("Purple"),
     BLUE("Blue"),
-    SKYBLUE("Skyblue"),
+    SKYBLUE("SkyBlue"),
     GRAY("Gray");
 
     private final String displayCode;
