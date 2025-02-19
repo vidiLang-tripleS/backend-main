@@ -22,10 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import TripleS.VidiLang.global.jwt.JwtFilter;
 import TripleS.VidiLang.global.jwt.JwtTokenProvider;
-import TripleS.VidiLang.login.filter.CustomJsonUsernamePasswordAuthenticationFilter;
-import TripleS.VidiLang.login.handler.LoginFailureHandler;
-import TripleS.VidiLang.login.handler.LoginSuccessHandler;
-import TripleS.VidiLang.login.service.UserDetailsServiceImpl;
+import TripleS.VidiLang.auth.filter.CustomJsonUsernamePasswordAuthenticationFilter;
+import TripleS.VidiLang.auth.handler.LoginFailureHandler;
+import TripleS.VidiLang.auth.handler.LoginSuccessHandler;
+import TripleS.VidiLang.auth.service.UserDetailsServiceImpl;
 import TripleS.VidiLang.global.oauth2.handler.OAuth2LoginFailureHandler;
 import TripleS.VidiLang.global.oauth2.handler.OAuth2LoginSuccessHandler;
 import TripleS.VidiLang.global.oauth2.service.CustomOAuth2UserService;

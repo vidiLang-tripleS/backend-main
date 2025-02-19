@@ -1,4 +1,4 @@
-package TripleS.VidiLang.login.controller;
+package TripleS.VidiLang.auth.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import TripleS.VidiLang.global.common.dto.ApiResponseTemplate;
 import TripleS.VidiLang.global.exception.SuccessCode;
-import TripleS.VidiLang.login.dto.SignUpRequest;
-import TripleS.VidiLang.login.service.LoginService;
+import TripleS.VidiLang.auth.dto.SignUpRequest;
+import TripleS.VidiLang.auth.service.LoginService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 

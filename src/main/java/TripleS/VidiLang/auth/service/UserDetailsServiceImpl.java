@@ -1,4 +1,4 @@
-package TripleS.VidiLang.login.service;
+package TripleS.VidiLang.auth.service;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

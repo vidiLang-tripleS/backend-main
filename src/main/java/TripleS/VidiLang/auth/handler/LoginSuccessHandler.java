@@ -1,4 +1,4 @@
-package TripleS.VidiLang.login.handler;
+package TripleS.VidiLang.auth.handler;
 
 import java.io.IOException;
 

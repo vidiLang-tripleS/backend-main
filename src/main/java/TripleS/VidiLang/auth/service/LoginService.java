@@ -1,4 +1,4 @@
-package TripleS.VidiLang.login.service;
+package TripleS.VidiLang.auth.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import TripleS.VidiLang.global.exception.ErrorCode;
 import TripleS.VidiLang.global.exception.model.CustomException;
-import TripleS.VidiLang.login.dto.SignUpRequest;
+import TripleS.VidiLang.auth.dto.SignUpRequest;
 import TripleS.VidiLang.member.entity.Member;
 import TripleS.VidiLang.member.entity.SocialType;
 import TripleS.VidiLang.member.repository.MemberRepository;

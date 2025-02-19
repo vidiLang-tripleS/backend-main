@@ -1,4 +1,4 @@
-package TripleS.VidiLang.login.filter;
+package TripleS.VidiLang.auth.filter;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

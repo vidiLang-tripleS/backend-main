@@ -1,19 +1,17 @@
-package TripleS.VidiLang.login.dto;
+package TripleS.VidiLang.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class SignUpRequest {
+@Setter
+@NoArgsConstructor
+public class LoginRequest {
 	@NotBlank(message = "email을 입력하세요.")
-	private String email;
+	private String loginId;
 
 	@NotBlank(message = "비밀번호를 입력하세요.")
 	private String password;
-
-	@NotBlank(message = "닉네임을 입력하세요.")
-	private String nickName;
 }
