@@ -32,7 +32,7 @@ public class JwtTokenProvider {
 
 	private final MemberRepository memberRepository;
 
-	@Value("${spring.jwt.secret_key}")
+	@Value("${spring.jwt.secret-key}")
 	private String secretKey;
 
 	@Value("${spring.jwt.access.expiration}")
