@@ -20,7 +20,7 @@ public class LoginController {
 	@PostMapping("/sign-up")
 	public ResponseEntity<ApiResponseTemplate<String>> signUp(@Valid @RequestBody SignUpRequest signUpRequest) {
 		loginService.signUp(signUpRequest);
-		return ApiResponseTemplate.success(SuccessCode.SIGNUP_USER_SUCCESS, "회원가입이 성공적으로 완료되었습니다.");
 
+		return ApiResponseTemplate.success(SuccessCode.SIGNUP_USER_SUCCESS, "회원가입이 성공적으로 완료되었습니다.");
 	}
 }
