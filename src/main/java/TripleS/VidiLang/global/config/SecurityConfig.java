@@ -42,7 +42,6 @@ public class SecurityConfig {
 	private final OAuth2LoginFailureHandler oAuth2LoginFailureHandler;
 	private final UserDetailsServiceImpl userDetailsServiceImpl;
 
-
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -113,7 +112,4 @@ public class SecurityConfig {
 		filter.setAuthenticationFailureHandler(loginFailureHandler());
 		return filter;
 	}
-
-
-
 }
