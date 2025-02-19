@@ -8,8 +8,8 @@ import lombok.Builder;
 public record FolderResponse(
         @Schema(description = "식별자 id", example = "1") Long id,
         @Schema(description = "폴더명", example = "영어 공부용 노트") String name,
-        @Schema(description = "색상 타입 - 파스칼 케이스", example = "Red") String colorType,
-        @Schema(description = "언어 타입 - 파스칼 케이스", example = "English") String languageType
+        @Schema(description = "색상 타입 - Screaming_snake_case를 준수", example = "RED") String colorType,
+        @Schema(description = "언어 타입 - Screaming_snake_case를 준수", example = "ENGLISH") String languageType
 ) {
 
     public static FolderResponse from(Folder folder) {
