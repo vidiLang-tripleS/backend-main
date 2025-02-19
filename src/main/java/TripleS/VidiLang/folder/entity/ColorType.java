@@ -5,14 +5,14 @@ import TripleS.VidiLang.global.exception.model.CustomException;
 
 public enum ColorType {
 
-    RED("Red"),
-    PINK("Pink"),
-    GREEN("Green"),
-    YELLOW("Yellow"),
-    PURPLE("Purple"),
-    BLUE("Blue"),
-    SKYBLUE("SkyBlue"),
-    GRAY("Gray");
+    RED("RED"),
+    PINK("PINK"),
+    GREEN("GREEN"),
+    YELLOW("YELLOW"),
+    PURPLE("PURPLE"),
+    BLUE("BLUE"),
+    SKYBLUE("SKYBLUE"),
+    GRAY("GRAY");
 
     private final String displayCode;
 

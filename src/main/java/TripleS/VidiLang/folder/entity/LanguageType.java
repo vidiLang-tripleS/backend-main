@@ -5,14 +5,14 @@ import TripleS.VidiLang.global.exception.model.CustomException;
 
 public enum LanguageType {
 
-    ENGLISH("English"),
-    SPANISH("Spanish"),
-    CHINESE("Chinese"),
-    JAPANESE("Japanese"),
-    PERSIAN("Persian"),
-    RUSSIAN("Russian"),
-    DEUTSCH("Deutsch"),
-    FRENCH("French"),;
+    ENGLISH("ENGLISH"),
+    SPANISH("SPANISH"),
+    CHINESE("CHINESE"),
+    JAPANESE("JAPANESE"),
+    PERSIAN("PERSIAN"),
+    RUSSIAN("RUSSIAN"),
+    DEUTSCH("DEUTSCH"),
+    FRENCH("FRENCH"),;
 
     private final String displayCode;
 
