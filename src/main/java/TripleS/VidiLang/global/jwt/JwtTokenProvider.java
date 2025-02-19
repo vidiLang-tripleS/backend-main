@@ -1,9 +1,13 @@
 package TripleS.VidiLang.global.jwt;
 
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+import java.util.Base64.Decoder;
 import java.util.Date;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -51,7 +55,7 @@ public class JwtTokenProvider {
 			.setClaims(claims)
 			.setIssuedAt(now)
 			.setExpiration(new Date(now.getTime() + accessExpiration))
-			.signWith(SignatureAlgorithm.HS256, secretKey)
+			.signWith(getSignKey(), SignatureAlgorithm.HS256)
 			.compact();
 	}
 
@@ -62,11 +66,16 @@ public class JwtTokenProvider {
 			.setSubject(email)
 			.setIssuedAt(now)
 			.setExpiration(new Date(now.getTime() + refreshExpiration))
-			.signWith(SignatureAlgorithm.HS256, secretKey)
+			.signWith(getSignKey(), SignatureAlgorithm.HS256)
 			.compact();
 
 		redisTemplate.opsForValue().set(email, refreshToken, refreshExpiration, TimeUnit.MILLISECONDS);
 		return refreshToken;
+	}
+
+	private SecretKey getSignKey() {
+		byte[] beyBytes = Decoders.BASE64.decode(secretKey);
+		return Keys.hmacShaKeyFor(beyBytes);
 	}
 
 	// 토큰에서 이메일과 socialType을 가져와서 Authentication 객체 생성
