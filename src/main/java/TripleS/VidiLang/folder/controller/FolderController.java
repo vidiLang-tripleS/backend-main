@@ -55,7 +55,7 @@ public class FolderController {
                     @ApiResponse(responseCode = "500", description = "서버 에러")
             })
     public ResponseEntity<ApiResponseTemplate<FolderResponse>> updateFolder(Principal principal,
-                                                                            @PathVariable Long folderId,
+                                                                            @PathVariable("folderId") Long folderId,
                                                                             @RequestBody FolderRequest folderRequest) {
          ApiResponseTemplate<FolderResponse> data = folderService.updateFolder(principal, folderId, folderRequest);
         return ResponseEntity.status(data.getStatus()).body(data);
@@ -85,7 +85,7 @@ public class FolderController {
                     @ApiResponse(responseCode = "404", description = "폴더를 찾을 수 없음"),
                     @ApiResponse(responseCode = "500", description = "서버 에러")
             })
-    public ResponseEntity<Void> deleteFolder(Principal principal, @PathVariable Long folderId) {
+    public ResponseEntity<Void> deleteFolder(Principal principal, @PathVariable("folderId") Long folderId) {
         folderService.deleteFolderById(principal, folderId);
         return ResponseEntity.noContent().build();
     }
