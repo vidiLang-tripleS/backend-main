@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface FolderRepository extends JpaRepository<Folder, Long> {
 
-    List<Folder> findByMemberId(@Param("memberId") Long memberId);
+    List<Folder> findByMemberEmail(@Param("email") String email);
 }
