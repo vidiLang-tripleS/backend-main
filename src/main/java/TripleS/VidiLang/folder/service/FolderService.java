@@ -27,8 +27,7 @@ public class FolderService {
 
     @Transactional
     public void createFolder(Principal principal, FolderRequest folderRequest) {
-        Long memberId = Long.parseLong(principal.getName());
-        Member member = getMemberById(memberId);
+        Member member = getMemberById(principal.getName());
         Folder folder = toFolderWithMember(member, folderRequest);
 
         folderRepository.save(folder);
@@ -36,9 +35,8 @@ public class FolderService {
 
     @Transactional(readOnly = true)
     public ApiResponseTemplate<List<FolderResponse>> getFolderList(Principal principal) {
-        Long memberId = Long.parseLong(principal.getName());
-        exitsMemberById(memberId);
-        List<Folder> folders = findFolderListByMemberId(memberId);
+        exitsMemberByEmail(principal.getName());
+        List<Folder> folders = findFolderListByMemberId(principal.getName());
         List<FolderResponse> folderResponses = folderResponsesConverter(folders);
 
         return ApiResponseTemplate.<List<FolderResponse>>builder()
@@ -51,8 +49,7 @@ public class FolderService {
 
     @Transactional
     public ApiResponseTemplate<FolderResponse> updateFolder(Principal principal, Long folderId, FolderRequest folderRequest) {
-        Long memberId = Long.parseLong(principal.getName());
-        exitsMemberById(memberId);
+        exitsMemberByEmail(principal.getName());
         Folder folder = findFolderById(folderId);
 
         folder.update(folderRequest.name(),
@@ -69,20 +66,19 @@ public class FolderService {
 
     @Transactional
     public void deleteFolderById(Principal principal, Long id) {
-        Long memberId = Long.parseLong(principal.getName());
-        exitsMemberById(memberId);
+        exitsMemberByEmail(principal.getName());
 
         folderRepository.deleteById(id);
     }
 
     private Folder findFolderById(Long folderId) {
         return folderRepository.findById(folderId)
-                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_ID_EXCEPTION,
-                        ErrorCode.NOT_FOUND_ID_EXCEPTION.getMessage() + "id = " + folderId));
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_EMAIL_EXCEPTION,
+                        ErrorCode.NOT_FOUND_EMAIL_EXCEPTION.getMessage() + "id = " + folderId));
     }
 
-    private void exitsMemberById(Long memberId) {
-        if (!memberRepository.existsById(memberId)) {
+    private void exitsMemberByEmail(String email) {
+        if (!memberRepository.existsByEmail(email)) {
             throw new CustomException(ErrorCode.INVALID_ID_EXCEPTION,
                     ErrorCode.INVALID_ID_EXCEPTION.getMessage());
         }
@@ -94,14 +90,14 @@ public class FolderService {
                 .toList();
     }
 
-    private List<Folder> findFolderListByMemberId(Long memberId) {
-        return folderRepository.findByMemberId(memberId);
+    private List<Folder> findFolderListByMemberId(String email) {
+        return folderRepository.findByMemberEmail(email);
     }
 
-    private Member getMemberById(Long memberId) {
-        return memberRepository.findById(memberId)
-                .orElseThrow(() -> new CustomException(ErrorCode.INVALID_ID_EXCEPTION,
-                        ErrorCode.INVALID_ID_EXCEPTION.getMessage() + memberId));
+    private Member getMemberById(String email) {
+        return memberRepository.findByEmail(email)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_EMAIL_EXCEPTION,
+                        ErrorCode.NOT_FOUND_EMAIL_EXCEPTION.getMessage() + email));
     }
 
     private Folder toFolderWithMember(Member member, FolderRequest folderRequest) {
