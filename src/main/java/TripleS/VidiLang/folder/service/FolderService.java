@@ -50,15 +50,21 @@ public class FolderService {
     }
 
     @Transactional
-    public void updateFolderBy(Principal principal, FolderRequest folderRequest) {
+    public ApiResponseTemplate<FolderResponse> updateFolder(Principal principal, Long folderId, FolderRequest folderRequest) {
         Long memberId = Long.parseLong(principal.getName());
         exitsMemberById(memberId);
-        Folder folder = findFolderById(folderRequest.folderId());
+        Folder folder = findFolderById(folderId);
 
-        folder.update(
-                folderRequest.name(),
+        folder.update(folderRequest.name(),
                 ColorType.getColorTypeOfString(folderRequest.colorType()),
                 LanguageType.getLanguageTypeOfString(folderRequest.languageType()));
+
+        return ApiResponseTemplate.<FolderResponse>builder()
+                .status(200)
+                .success(true)
+                .message("폴더 업데이트 성공")
+                .data(FolderResponse.from(folder))
+                .build();
     }
 
     @Transactional
