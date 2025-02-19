@@ -61,6 +61,14 @@ public class FolderService {
                 LanguageType.getLanguageTypeOfString(folderRequest.languageType()));
     }
 
+    @Transactional
+    public void deleteFolderById(Principal principal, Long id) {
+        Long memberId = Long.parseLong(principal.getName());
+        exitsMemberById(memberId);
+
+        folderRepository.deleteById(id);
+    }
+
     private Folder findFolderById(Long folderId) {
         return folderRepository.findById(folderId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_ID_EXCEPTION,
