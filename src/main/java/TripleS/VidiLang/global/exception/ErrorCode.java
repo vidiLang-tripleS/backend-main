@@ -40,7 +40,7 @@ public enum ErrorCode {
     AUTHENTICATION_FAILED_EXCEPTION(HttpStatus.FORBIDDEN, "인증에 실패했습니다. "),
 
     // 404 NOT FOUND
-    NOT_FOUND_ID_EXCEPTION(HttpStatus.NOT_FOUND, "찾을 수 없는 ID"),
+    NOT_FOUND_EMAIL_EXCEPTION(HttpStatus.NOT_FOUND, "찾을 수 없는 Email입니다."),
     NOT_FOUND_USER_EXCEPTION(HttpStatus.NOT_FOUND, "해당 검색결과에 해당하는 사용자를 찾을 수 없습니다."),
 
     // 409 Conflict
