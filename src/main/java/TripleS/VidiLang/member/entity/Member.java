@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "member")
-public class Member {
+public class Member extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,7 @@ public class Member {
     @Column(nullable = false)
     private String nickName;
 
-    private String ImageUrl;
+    private String imageUrl;
 
     private String socialId; // 로그인한 소셜 타입의 식별자 값
 
@@ -51,7 +51,7 @@ public class Member {
         this.email = email;
         this.password = password;
         this.nickName = nickName;
-        this.ImageUrl = imageUrl;
+        this.imageUrl = imageUrl;
         this.socialId = socialId;
         this.socialType = socialType;
     }
