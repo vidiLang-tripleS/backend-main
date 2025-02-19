@@ -28,7 +28,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 		String refreshToken = jwtTokenProvider.createRefreshToken(email); // RefreshToken 발급
 
 		// 응답 헤더에 토큰 추가
-		response.setHeader("Authorization", "Bearer " + accessToken);
+		response.setHeader("Authorization", accessToken);
 		response.setHeader("Refresh-Token", refreshToken);
 
 	}
