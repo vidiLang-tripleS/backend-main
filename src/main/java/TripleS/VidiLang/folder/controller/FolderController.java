@@ -39,9 +39,9 @@ public class FolderController {
                     @ApiResponse(responseCode = "400", description = "찾을 수 없는 사용자"),
                     @ApiResponse(responseCode = "500", description = "서버 에러")
             })
-    public ResponseEntity<String> createFolder(Principal principal, @RequestBody FolderRequest folderRequest) {
-        folderService.createFolder(principal, folderRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("폴더 생성 성공");
+    public ResponseEntity<ApiResponseTemplate<FolderResponse>> createFolder(Principal principal, @RequestBody FolderRequest folderRequest) {
+        ApiResponseTemplate<FolderResponse> data = folderService.createFolder(principal, folderRequest);
+        return ResponseEntity.status(data.getStatus()).body(data);
     }
 
     @PatchMapping("/{folderId}")

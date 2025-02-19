@@ -26,11 +26,18 @@ public class FolderService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public void createFolder(Principal principal, FolderRequest folderRequest) {
+    public ApiResponseTemplate<FolderResponse> createFolder(Principal principal, FolderRequest folderRequest) {
         Member member = getMemberById(principal.getName());
         Folder folder = toFolderWithMember(member, folderRequest);
 
         folderRepository.save(folder);
+
+        return ApiResponseTemplate.<FolderResponse>builder()
+                .status(201)
+                .success(true)
+                .message("폴더 생성 성공")
+                .data(FolderResponse.from(folder))
+                .build();
     }
 
     @Transactional(readOnly = true)
